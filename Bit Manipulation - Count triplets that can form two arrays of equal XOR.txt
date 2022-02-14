@@ -1,0 +1,24 @@
+public class Solution {
+    public int CountTriplets(int[] arr) 
+    {
+      int prefix = 0, res = 0; 
+      IList<int> c = null;
+      Dictionary<int, IList<int>> count = new Dictionary<int, IList<int>>();
+      count.Add(0, new List<int>() {-1 });
+      for (int i = 0; i < arr.Length; ++i)
+      {
+        prefix ^= arr[i];
+        c = count.GetValueOrDefault(prefix);
+        if (c == null)
+        {
+          count.Add(prefix, new List<int>() { i });
+        }
+        else
+        {
+          c.ToList().ForEach(x => res += i - x -1);
+          count[prefix].Add(i);
+        }
+      }
+      return res;
+    }
+}

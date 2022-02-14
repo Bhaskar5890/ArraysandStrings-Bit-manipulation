@@ -1,0 +1,31 @@
+public class Solution {
+    public int[] SingleNumber(int[] nums) 
+    {
+        var res = new int[2];
+        var Xor = 0;
+        for(int i = 0 ; i < nums.Length; i++)
+        {
+            Xor = (Xor ^ nums[i]);
+        }
+        
+        var setMask = (Xor & -Xor);
+        
+        var sum1 = 0;
+        var sum2 = 0;
+        
+        for(int i = 0; i < nums.Length; i++)
+        {
+            if((nums[i] & setMask) > 0)
+            {
+                sum1 = (sum1 ^ nums[i]);
+            }
+            else
+            {
+                sum2 = (sum2 ^ nums[i]);
+            }
+        }
+        res[0] = sum1;
+        res[1] = sum2;
+        return res;
+    }
+}

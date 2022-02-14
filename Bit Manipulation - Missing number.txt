@@ -1,0 +1,17 @@
+public class Solution {
+    public int MissingNumber(int[] nums) 
+    {
+        int n = nums.Length + 1;
+        int numsSum = 0;
+        for(int i = 0; i < nums.Length; i++)
+        {
+            numsSum = numsSum ^ nums[i];
+        }
+        int rangeSum = 0;
+        for(int i = 0; i < n; i++)
+        {
+            rangeSum = rangeSum ^ i;
+        }
+        return rangeSum ^ numsSum;
+    }
+}

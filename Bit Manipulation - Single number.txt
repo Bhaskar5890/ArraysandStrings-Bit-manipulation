@@ -1,0 +1,13 @@
+public class Solution {
+    public int SingleNumber(int[] nums) 
+    {
+        var ret = 0;
+        var n = nums.Length;
+        for(int i = 0; i < n ; i++)
+        {
+            ret ^= nums[i];
+        }
+        
+        return ret;
+    }
+}
